@@ -1,0 +1,4 @@
+workload,cpu_median_seconds,cuda_median_seconds,gpu_speedup_x,max_abs_numeric_error
+full_train_evaluate,1.59191,1.19903,1.3277,N/A - retrained
+inference_3200,0.02682,0.001259,21.3026,1.1920928955078125e-07
+inference_160000,0.237679,0.020659,11.5049,1.1920928955078125e-07

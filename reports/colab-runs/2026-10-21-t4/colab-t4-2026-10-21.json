@@ -1,0 +1,66 @@
+{
+  "run_id": "colab-t4-2026-10-21-072400-utc",
+  "origin": "User-executed Google Colab notebook and uploaded result archive; independently inspected artifact values and code SHA256 checks",
+  "recorded_at_utc": "2026-10-21T07:23:59.294319+00:00",
+  "environment": {
+    "service": "Google Colab",
+    "gpu": "Tesla T4",
+    "gpu_memory_gib": 14.563,
+    "system_ram_gib": 12.671,
+    "cpu": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+    "logical_cpu_count": 2,
+    "python": "3.13.15",
+    "pytorch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "nvidia_driver": "580.82.07"
+  },
+  "source_sha256": {
+    "src/antibiotic_timing_synthetic.py": "83b0c9ff08c4f18cc3e40e05dd19ed9ce9ef10d283eca5bc359e4a71ba1b5a51",
+    "scripts/benchmark_cpu_cuda.py": "e78cf8e69a384273adab45af18b49df8a1b3c3970ec1f916afd44780c2b1f173"
+  },
+  "training": {
+    "workload": "3 seeds; 3200 synthetic people/seed; max 70 epochs; 64 oracle draws",
+    "cpu_seconds": [
+      6.87154,
+      0.79227,
+      1.59191
+    ],
+    "cuda_seconds": [
+      1.23279,
+      0.75662,
+      1.19903
+    ],
+    "cpu_median_seconds": 1.59191,
+    "cuda_median_seconds": 1.19903,
+    "reported_speedup": 1.3277,
+    "scope": "End-to-end retraining: CPU/GPU fitted models not identical; first CPU run includes potential warmup overhead"
+  },
+  "inference": [
+    {
+      "n_people": 3200,
+      "n_timing_regimes": 5,
+      "cpu_median_seconds": 0.02682,
+      "cuda_median_seconds": 0.001259,
+      "reported_speedup": 21.3026,
+      "maximum_prediction_difference": 1.1920928955078125e-7,
+      "reported_numerical_parity": true
+    },
+    {
+      "n_people": 160000,
+      "n_timing_regimes": 5,
+      "cpu_median_seconds": 0.237679,
+      "cuda_median_seconds": 0.020659,
+      "reported_speedup": 11.5049,
+      "maximum_prediction_difference": 1.1920928955078125e-7,
+      "reported_numerical_parity": true
+    }
+  ],
+  "qualifications": [
+    "All model data synthetic; no real patient clinical antibiotic outcomes",
+    "Inference tests reuse identical trained weights across CPU and CUDA",
+    "Inference timings include copy to and from device; exclude model transfer and warmup",
+    "Only one Colab session and three repeated samples per workload: preliminary benchmark, not generalized GPU advantage",
+    "GPU hardware measures are observed, not inferred",
+    "Original executable Colab notebook and full ZIP submitted separately by the user; aggregate snapshot here does not reproduce their binary files"
+  ]
+}
