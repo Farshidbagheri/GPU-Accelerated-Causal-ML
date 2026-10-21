@@ -96,6 +96,8 @@ The separately scoped PyTorch experiments install their scientific dependencies 
 
 **Citation:** The first research-software archive is **v0.1.0**, [version-specific DOI **10.5281/zenodo.23530462**](https://doi.org/10.5281/zenodo.23530462) ([GitHub Release](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/releases/tag/v0.1.0)). For the evolving project across future releases, use the [concept DOI **10.5281/zenodo.23530461**](https://doi.org/10.5281/zenodo.23530461). [`CITATION.cff`](CITATION.cff) contains the software citation metadata. The badge at the top links to the concept DOI. A DOI preserves a citable software release; it does **not** certify treatment safety, scientific novelty or causal validity. **The frozen v0.1.0 archive predates this README DOI-badge update**, which is a normal post-archive change on `main`.
 
-**Research author:** Farshid Bagheri Saravi · Case Western Reserve University
+## Research outlook
 
-> **Scientific and clinical boundary:** This is non-clinical research software. All intervention-effect experiments in this repository are **simulated**, and the real ED demo supports **descriptive timestamp audits only**. No therapeutic recommendation should be based on these outputs.
+**From reproducible prototypes to reliable, scalable causal evidence.** The next phase will connect decision-time treatment definitions, uncertainty-aware timing-response analyses, and matched CPU/CUDA evaluation—testing not only **how fast** an analysis runs, but also **when its conclusions can be trusted**.
+
+*Farshid Bagheri Saravi · Case Western Reserve University*
