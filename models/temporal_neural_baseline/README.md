@@ -18,4 +18,4 @@ python -m pytest -q tests/test_causal_benchmark.py
 python src/longitudinal_synthetic_benchmark.py --seeds 40,41,42 --patients 1200 --epochs 45
 \`\`\`
 
-The [GitHub Actions benchmark](../../.github/workflows/causal-benchmark.yml) runs only when its files change or manually. Use an actual CUDA runner for future CPU/GPU speed comparisons (same data, seeds, batch size and model settings).
+The [GitHub Actions benchmark](../../.github/workflows/causal-benchmark.yml) runs only when its files change or manually. This **specific S-learner baseline** remains CPU-validated only. A [separate Colab Tesla T4 experiment](../../experiments/colab-t4/README.md) measured CUDA inference speed on a different synthetic timing-curve model. Any future CPU/GPU claim for this baseline must run it on actual CUDA hardware with matched data, seeds, batch size, device synchronization and model settings.
