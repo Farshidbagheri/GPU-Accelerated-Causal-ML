@@ -6,6 +6,9 @@ This repository supports doctoral research on the causal effects of antibiotic i
 
 ![Research system architecture](figures/research-system-architecture.svg)
 
+
+**Research-to-code traceability:** [Which elements of the antibiotic-timing dissertation are implemented, simulated, or still proposed](docs/research-traceability.md).
+
 ## Research architecture
 
 1. **Clinical decision contract** — define eligible patients, landmark time, available history, treatment strategies, outcome horizon, and identification assumptions.
