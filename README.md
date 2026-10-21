@@ -1,104 +1,99 @@
 # GPU-Accelerated Causal Machine Learning
 
-**Decision-time reliability and computational scalability for longitudinal treatment-effect research**
+**Decision-time reliability · Synthetic treatment-timing experiments · Measured CUDA inference**
 
-This repository supports doctoral research on the causal effects of antibiotic initiation timing in sepsis. Its engineering goal is to make repeated counterfactual analyses **auditable, statistically credible, and eventually more computationally efficient**, rather than to automate antibiotic prescribing.
+> **Status: early research-software prototype.** Supports a Ph.D. research plan on the causal effects of antibiotic initiation timing in sepsis and its GPU-computing evaluation. This repository contains **completed, carefully scoped pilot experiments**, not a validated antibiotic-timing policy, medical product, or a novel clinical effect estimate.
 
-![Research system architecture](figures/research-system-architecture.svg)
+[Research architecture](docs/architecture.md) · [Verified experimental evidence](reports/research-evidence.md) · [Original executed Tesla T4 notebook](experiments/colab-t4/README.md) · [Methods and limitations](docs/research-traceability.md) · [Data and rights](RIGHTS_AND_LICENSES.md)
 
+## Research question and evidence
 
-**Research-to-code traceability:** [Which elements of the antibiotic-timing dissertation are implemented, simulated, or still proposed](docs/research-traceability.md).
+**Scientific question:** For a patient with suspected sepsis at a defined ED decision time, how might the risk associated with delaying the first IV antibiotic administration vary with information available **at that time**, and how can repeated causal-model stress tests be made computationally practical?
 
-## Research architecture
+The intended dissertation / NVIDIA fellowship contribution is a **decision-time robustness and computation framework**: specify treatment contrasts first, check temporal eligibility and causal assumptions, estimate and stress-test timing-response effects, then evaluate matched CPU/CUDA workloads at valid statistical fidelity.
 
-1. **Clinical decision contract** — define eligible patients, landmark time, available history, treatment strategies, outcome horizon, and identification assumptions.
-2. **Temporal evidence audit** — distinguish event, charting, result-availability and administration timestamps before building predictors.
-3. **Causal modeling** — evaluate factual outcomes and counterfactual estimators with controlled simulations and transparent comparators.
-4. **Reliability gates** — test overlap, temporal sensitivity, known-truth error, uncertainty and failure conditions.
-5. **Computational profiling** — benchmark the same validated workload on CPU and CUDA, accounting for training, memory, data transfer and numerical agreement.
+The repo is **supporting evidence for this proposed workflow**, not an implementation of its complete clinical system.
 
-Partial scientific experiments are described below. **A small synthetic CPU/CUDA performance benchmark has now been measured**; full GPU acceleration of the proposed longitudinal causal validation pipeline is still a research objective. See [technical architecture](docs/architecture.md).
-
-## New: simulated individualized risk-from-waiting curves
-
-A completed [factual-only synthetic treatment-start experiment](docs/personalized-risk-curve-experiment.md) learns patient-dependent risk curves across five simulated intervention times. On three GitHub-tested seeds, mean curve RMSE was **0.0381** for an IPW neural learner, **0.0411** for an unweighted neural learner and **0.1989** for unadjusted group means, against *known simulator* counterfactual truth. These are not effects of actual antibiotics. The initial GitHub-hosted profiler ran on CPU only; a **subsequent user-executed Google Colab Tesla T4 run measured CUDA inference** on the same family of synthetic timing-response experiments.
-
-![Known synthetic timing-response and estimated curve](figures/personalized-risk-curves.svg)
-
-## Real Tesla T4 benchmark (Colab, 21 October 2026)
-
-Using **identical trained model weights** for CPU and CUDA synthetic inference, a Google Colab Tesla T4 run measured:
-
-| Workload | CPU median | CUDA median | Observed ratio | Numerical check |
-| --- | ---: | ---: | ---: | --- |
-| 3,200 synthetic individuals × 5 timing options | 26.820 ms | 1.259 ms | 21.30× | Max difference 1.19×10⁻⁷ |
-| **160,000 synthetic individuals × 5 options** | **237.679 ms** | **20.659 ms** | **11.50×** | Max difference 1.19×10⁻⁷ |
-| End-to-end training + evaluation (three seeds) | 1.592 s | 1.199 s | 1.33× | Independently trained; no weight parity |
-
-These are **three-repeat, single-session synthetic measurements**, not multi-platform performance guarantees. The CPU and GPU training results use independently fitted models; their 1.33× result is exploratory. There is **no measured causal effect in sepsis patients**.
-
-[Executed original Colab notebook and exact sources](experiments/colab-t4/README.md) · [Full measured benchmark provenance](reports/colab-runs/2026-10-21-t4/README.md)
-
-## Results supported by executed code
-
-| Evidence | Experiment and interpretation | Verification |
+| Evidence already available | Verified scope | Not demonstrated |
 | --- | --- | --- |
-| **Reproduced prior work** | Re-ran 100 synthetic experiments from the authors' *Off by a Beat* notebook (2026). Simulated policy values **3.343 vs 9.878** match its stored outputs. This is **not** the paper's clinical experiment. | [Workflow](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39530437176) |
-| **Independent causal-learning baseline** | PyTorch outcome model trained on three synthetic, patient-disjoint longitudinal datasets; mean **PEHE-RMSE 0.287** versus **0.641** for adjusted Ridge and **2.912** for a naive comparator. These are synthetic one-step treatment effects, **not** clinical antibiotic effects. | [Workflow](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39531676558) |
-| **Real-data documentation audit** | Open MIMIC-IV-ED Demo (100 deidentified patients, **222 ED stays**, **1,038** vital-sign records). Analyzed documentation timing against hypothetical decision cutoffs, **not** trained-model leakage or efficacy. | [Workflow](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39542809955) |
-| **Model integration assessments** | VTDNet upstream architecture: reduced CPU forward/backward smoke check only. T4: paper-level reproduction blocked by missing/incompatible original preprocessing inputs. | [Model registry](models/README.md) |
+| **ED time audit** | Public 100-person MIMIC-IV-ED Demo; **222 ED stays** and **1,038 vital-sign rows** | Treatment effects or actual feature-availability times |
+| **Synthetic counterfactual baseline** | Patient-disjoint PyTorch experiment; **PEHE-RMSE 0.287** vs **0.641 Ridge** (three seeds) | Real-patient effects or dynamic clinical regimes |
+| **Synthetic timing-response curves** | Five simulated treatment-start options; **IPW mean curve RMSE 0.0381** vs **0.1989 naive** (three seeds) | Patient-specific safe antibiotic delay |
+| **Published toy reproduction** | Re-executed authors' *Off by a Beat* **100-run synthetic toy**, reproducing its stored values | Full sepsis experiment or independent method discovery |
+| **Tesla T4** | Identical-weight synthetic inference **11.50× CUDA/CPU** at 160,000 × 5 options | Full GPU-accelerated clinical causal-analysis pipeline |
 
-![Synthetic known-truth error comparison](figures/synthetic_counterfactual_pehe.svg)
+[Detailed research-to-code evidence table →](docs/research-traceability.md)
 
-**Important boundary:** A CUDA speedup was measured only for a synthetic inference workload; no CUDA throughput or clinically identified effect of delayed antibiotic administration in real EHR has been established. Full T4 and VTDNet paper metrics have **not** been reproduced.
+![Research system architecture: completed components and future validation stages](figures/research-system-architecture.svg)
 
-## Repository layout
+*Diagram convention: green marks a completed, **scope-limited** experiment; blue marks planned work. It is a research roadmap, not an end-to-end validated clinical pipeline.*
 
-```text
-.github/workflows/     Continuous integration and separately scoped experiments
-data/                  Open MIMIC-IV-ED Demo tables + original license/checksums
-experiments/           Executed Colab notebook with exact benchmark sources and outputs
-docs/                  Architecture, reproducibility, experiment matrix, data governance
-figures/               Editable research diagrams and result summaries
-models/                External-method registry and scope of reproduction
-reports/               Auditable aggregate results, protocols and machine-readable summaries
-scripts/               Data integrity, timestamp audit and paper-integration checks
-src/                   Temporal data validation and longitudinal causal benchmark
-tests/                 Patient-split, timing and implementation unit tests
-```
+## Measured GPU experiment
 
-### Quickstart: verified open-data audit
+An **executed Google Colab NVIDIA Tesla T4 session (21 October 2026)** compared CPU and CUDA inference using identical trained model weights. Median timings below were computed from **three repetitions per workload**; transfer of input and output data was counted, while model transfer and warmup were excluded.
 
-Requires Python 3.11; does not need a GPU.
+![Recorded same-weight synthetic CPU/CUDA inference-time ratios on Tesla T4](figures/measured-t4-inference-speedup.svg)
+
+| Synthetic inference workload | CPU median | CUDA median | CPU / CUDA | Max prediction difference |
+| --- | ---: | ---: | ---: | ---: |
+| 3,200 simulated people × 5 options | 26.820 ms | 1.259 ms | **21.30×** | 1.19 × 10⁻⁷ |
+| 160,000 simulated people × 5 options | 237.679 ms | 20.659 ms | **11.50×** | 1.19 × 10⁻⁷ |
+
+A separate **end-to-end training and evaluation** timing comparison gave CPU 1.592 s vs CUDA 1.199 s (1.33×), but the two devices **trained independent weights**; this is preliminary, not a parity-controlled speedup. The single Colab session does not establish generalized GPU performance. **These experiments use synthetic data only and do not measure antibiotic effects in real patients.**
+
+[Executed notebook + source files](experiments/colab-t4/README.md) · [Hardware, timing protocol, and limitations](reports/colab-runs/2026-10-21-t4/README.md) · [Machine-readable measurements](reports/colab-runs/2026-10-21-t4/colab-t4-2026-10-21.json)
+
+## Causal-ML feasibility studies
+
+### Individualized *synthetic* timing-response curves
+
+A controlled simulator provides five timing interventions and known counterfactual truth **for evaluation only**. Two neural estimators are trained on factual outcomes; no oracle outcomes are used for fitting. The IPW learner attained **0.038054 mean curve RMSE** versus **0.041096 unweighted** and **0.198853 naive group means** across three independent synthetic seeds. Simulator-provided treatment probabilities would **not** be known in real observational EHR data.
+
+![Known simulator risk versus an estimated weighted risk curve for the first synthetic seed](figures/personalized-risk-curves.svg)
+
+[Method, assumptions and observed results](docs/personalized-risk-curve-experiment.md) · [GitHub Actions evidence](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39556722065)
+
+### Independent sequential-data and temporal-audit groundwork
+
+- **Synthetic PyTorch S-learner:** mean one-step PEHE-RMSE **0.287209** compared with **0.640825 Ridge** and **2.912222 naive** on a fixed, synthetic data-generating process. It is **not** a T4, VTDNet, or G-Transformer paper reproduction. [Model evaluation](reports/research-evidence.md) · [Visual comparison](figures/synthetic_counterfactual_pehe.svg).
+- **Temporal-alignment demonstration:** original authors' *Off by a Beat* toy notebook re-executed across **100 synthetic runs**; stored simulated policy values **3.343** (original) and **9.878** (shifted) reproduced. No real clinical policy or mortality outcome was reproduced. [Replication record](reports/temporal-alignment.md) · [Toy-results plot](figures/offbyabeat_authors_toy_policy_values.svg).
+- **Public ED Demo documentation audit:** at hypothetical 30/60/120-minute arrival cutoffs, **868 / 815 / 693 of 1,038** vital-sign records had later **charttime** timestamps. This is a descriptive documentation-time count; it **cannot** establish clinical data leakage, antibiotic administration, or treatment effects. [Audit details](reports/ed-timing-audit.md) · [Measured figure](figures/documentation_cutoff_audit.svg).
+
+## Reproduce and audit
+
+**Basic CPU-only data audit** (Python 3.11 supported):
 
 ```bash
 python -m pip install -r requirements.txt
 python scripts/verify_public_demo.py
+python scripts/check_research_metadata.py
 python -m pytest -q tests/test_timing_audit.py tests/test_run_pilot.py
 python scripts/run_pilot.py --data data --out results --offsets 30,60,120
 ```
 
-### Run model benchmarks
+The separately scoped PyTorch experiments install their scientific dependencies through reproducible [GitHub Actions workflows](.github/workflows/). For the **measured GPU run**, open the [original Colab notebook](experiments/colab-t4/NVIDIA_Causal_ML_CPU_CUDA_Benchmark.ipynb) in Google Colab with CUDA hardware; results depend on the allocated GPU and runtime. The recorded notebook is not identical to the earlier GitHub CPU implementation.
 
-- [Causal estimator code](src/longitudinal_synthetic_benchmark.py) · [CPU-run CI](.github/workflows/causal-benchmark.yml)
-- [Published temporal-alignment toy reproduction](scripts/reproduce_offbyabeat_toy.py) · [CI](.github/workflows/reproduce-offbyabeat-toy.yml)
-- [Upstream VTDNet architecture smoke](scripts/vtdnet_upstream_smoke.py) · [CI](.github/workflows/vtdnet-architecture.yml)
-- [Experiment evidence](reports/research-evidence.md) · [Experimental scope matrix](docs/experiment-matrix.md)
+**Documentation and reproducibility checks run automatically in GitHub Actions** to detect inconsistent evidence metadata, broken internal links, and altered public-demo checksums. [CI definition](.github/workflows/test.yml).
 
-Separate model jobs install their own dependencies. Standard hosted GitHub Actions runners here provide CPU; they are **not** evidence of GPU execution.
+## Repository map
 
-## Citation and long-term research preservation
+| Location | Purpose |
+| --- | --- |
+| [`data/`](data/README.md) | Official public ED Demo data, original ODbL license and checksum manifest |
+| [`experiments/colab-t4/`](experiments/colab-t4/README.md) | Executed GPU notebook, actual Python source and runtime output |
+| [`src/`](src/) and [`scripts/`](scripts/) | Own prototype estimators, audits, execution tools and integrity checks |
+| [`reports/`](reports/) and [`figures/`](figures/) | Recorded numeric evidence and figures generated from real runs/simulations |
+| [`models/`](models/README.md) | Third-party method provenance and reproduction status; **not** copied model source |
+| [`docs/`](docs/research-traceability.md) and [`tests/`](tests/) | Scientific boundaries, target architecture and regression tests |
 
-Citation metadata is provided in [CITATION.cff](CITATION.cff). A [Zenodo-linked release and DOI](docs/zenodo-publication-guide.md) are **planned, not yet issued**. The first research-software release is intended to preserve source, executed Tesla T4 notebook and traceable synthetic results. A DOI would identify a citable version, **not** certify clinical accuracy or establish exclusive IP rights.
+## Data, licensing and citations
 
-## Data, licenses and attribution
+**Dataset:** Johnson, A., Bulgarelli, L., Pollard, T., Celi, L. A., Horng, S., & Mark, R. (2023). *MIMIC-IV-ED Demo v2.2*. PhysioNet. [DOI: 10.13026/jzz5-vs76](https://doi.org/10.13026/jzz5-vs76). The six bundled, byte-preserved public demonstration tables are licensed under **Open Data Commons ODbL 1.0**, **not MIT**. The [original license](data/LICENSE.txt) and checksums are retained. The **credential-restricted full MIMIC-IV / MIMIC-IV-ED datasets are not included**.
 
-The checked-in ED data are the **public MIMIC-IV-ED Demo v2.2**, not the credential-restricted full dataset. Source: Johnson et al. (2023), PhysioNet, [DOI 10.13026/jzz5-vs76](https://doi.org/10.13026/jzz5-vs76), **Open Data Commons Open Database License 1.0**. Source files and hashes are preserved; [CI checks the distribution hashes](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39542809361).
+**Independent code:** no blanket open-source software license has yet been granted. **Do not apply the dataset's ODbL or Zenodo's CC BY default to the original code.** Upstream paper implementations retain their own licenses and are linked/pinned rather than redistributed here. Read the [file-by-file rights statement](RIGHTS_AND_LICENSES.md) before redistribution or publication.
 
-[Data and licensing](docs/data-and-licensing.md) · [Reproducibility protocol](docs/reproducibility.md)
+**Citation:** [`CITATION.cff`](CITATION.cff) describes the research software. [A Zenodo DOI is planned but **not yet issued**](docs/zenodo-publication-guide.md). A software DOI would preserve a particular early-stage research release; it would **not** certify treatment safety, scientific novelty, or causal validity.
 
-**Data folder:** [source, table descriptions and usage boundaries](data/README.md). **External models:** [source links and exact validation status](models/README.md).
+**Research author:** Farshid Bagheri Saravi · Case Western Reserve University
 
-**Code license:** No open-source software license has been assigned to the original Python code. The data's ODbL license does not automatically license that code. Do not upload credential-restricted data, identifiable records, secrets, or unapproved institutional data here.
-
-**Research:** Farshid Bagheri Saravi, Case Western Reserve University.
+> **Scientific and clinical boundary:** This is non-clinical research software. All intervention-effect experiments in this repository are **simulated**, and the real ED demo supports **descriptive timestamp audits only**. No therapeutic recommendation should be based on these outputs.
