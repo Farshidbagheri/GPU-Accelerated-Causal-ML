@@ -1,0 +1,35 @@
+name: VTDNet upstream model architecture audit (CPU)
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/vtdnet_upstream_smoke.py
+      - .github/workflows/vtdnet-architecture.yml
+permissions:
+  contents: read
+jobs:
+  native-forward:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: Throwfox/VTDNet
+          ref: 3770f32e0479dab16a97fc11849dfaa1fc717153
+          path: upstream_vtdnet
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install "numpy>=1.26,<3" "scikit-learn>=1.4,<2" "tqdm>=4,<5"
+          python -m pip install "torch==2.5.1" --index-url https://download.pytorch.org/whl/cpu
+      - name: Trainability and batch-composition smoke test
+        run: |
+          python scripts/vtdnet_upstream_smoke.py --upstream upstream_vtdnet --out results/vtdnet_native_smoke.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vtdnet-upstream-cpu-smoke
+          path: results/vtdnet_native_smoke.json
+          retention-days: 14
