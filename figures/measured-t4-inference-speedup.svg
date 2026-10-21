@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="468" viewBox="0 0 1000 468" role="img" aria-labelledby="title desc">
+<title id="title">Measured Tesla T4 synthetic inference speedup</title>
+<desc id="desc">Identical trained model weights on CPU versus CUDA in a single Colab Tesla T4 session. For 3,200 simulated individuals by five timing options, median times were CPU 26.820 milliseconds and CUDA 1.259 milliseconds, ratio 21.30. For 160,000 simulated individuals by five timing options, CPU 237.679 milliseconds and CUDA 20.659 milliseconds, ratio 11.50. Each workload had three timing repetitions; not a real-patient or complete causal pipeline benchmark.</desc>
+<rect width="1000" height="468" fill="#ffffff"/>
+<rect x="28" y="25" width="944" height="413" rx="18" fill="#f7fafc" stroke="#dce7ee"/>
+<text x="60" y="73" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700" fill="#15364a">Tesla T4 | Measured synthetic inference speedup</text>
+<text x="60" y="101" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#506778">Identical weights and inputs · 3 repeats · single Google Colab session · 21 October 2026</text>
+<text x="60" y="153" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#233f55">3,200 synthetic individuals × 5 timing options</text>
+<rect x="60" y="175" width="705" height="43" rx="7" fill="#e2eaee"/>
+<rect x="60" y="175" width="601" height="43" rx="7" fill="#097d84"/>
+<text x="677" y="203" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#15364a">21.30×</text>
+<text x="60" y="239" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#526a78">CPU 26.820 ms  /  CUDA 1.259 ms</text>
+<text x="60" y="288" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#233f55">160,000 synthetic individuals × 5 timing options</text>
+<rect x="60" y="310" width="705" height="43" rx="7" fill="#e2eaee"/>
+<rect x="60" y="310" width="325" height="43" rx="7" fill="#097d84"/>
+<text x="402" y="338" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#15364a">11.50×</text>
+<text x="60" y="374" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#526a78">CPU 237.679 ms  /  CUDA 20.659 ms</text>
+<text x="60" y="413" font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#617987">Bars show CPU/CUDA inference-time ratios, not execution times. Max output difference: 1.19 × 10^-7.</text>
+<text x="60" y="453" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#607486">Synthetic workload only · Model transfer and warmup excluded · Not clinical efficacy or full-pipeline acceleration</text>
+</svg>
