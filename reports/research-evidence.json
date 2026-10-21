@@ -1,7 +1,7 @@
 {
   "verified_at_utc": "2026-10-21",
   "clinical_effect_estimated": false,
-  "nvidia_gpu_benchmark_performed": false,
+  "nvidia_gpu_benchmark_performed": true,
   "tasks": [
     {
       "id": "ed_demo",
@@ -62,13 +62,47 @@
       "status": "full_reproduction_blocked",
       "source": "https://github.com/ruoqi-liu/T4",
       "reason": "Synthetic generator output incompatible with expected training input and missing private preprocessed data"
+    },
+    {
+      "id": "synthetic_personalized_risk_curves",
+      "status": "github_actions_cpu_verified_synthetic",
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "people_per_seed": 3200,
+      "ipw_curve_rmse_mean": 0.038054,
+      "unweighted_curve_rmse_mean": 0.041096,
+      "naive_curve_rmse_mean": 0.198853,
+      "run_url": "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39556722065",
+      "clinical_effect_estimated": false,
+      "scope": "Synthetic known-truth timing curves; original GitHub Actions run CPU only"
+    },
+    {
+      "id": "colab_tesla_t4_synthetic_inference",
+      "status": "user_executed_source_and_aggregate_reviewed",
+      "date_utc": "2026-10-21",
+      "gpu": "NVIDIA Tesla T4",
+      "n_synthetic_people": 160000,
+      "n_timing_alternatives": 5,
+      "cpu_median_ms": 237.679,
+      "cuda_median_ms": 20.659,
+      "reported_speedup": 11.5049,
+      "max_output_difference": 1.1920928955078125e-7,
+      "weights_identical_for_inference": true,
+      "reported_repetitions": 3,
+      "provenance": "reports/colab-runs/2026-10-21-t4/colab-t4-2026-10-21.json",
+      "executed_notebook": "experiments/colab-t4/NVIDIA_Causal_ML_CPU_CUDA_Benchmark.ipynb",
+      "scope": "Single Colab session; a separate synthetic timing-response implementation; not a whole causal-pipeline benchmark or clinical validation"
     }
   ],
   "remaining_research_gates": [
     "Permissioned longitudinal treatment administration and outcomes",
     "Author-paper comparators on like-for-like synthetic DGP",
-    "GPU timing on a real CUDA runner with matched workload",
+    "Independent repeat of matched end-to-end causal analysis on CPU/CUDA, estimator parity, memory and inference fidelity (single-session synthetic inference Tesla T4 benchmark already measured)",
     "Multi-step antibiotic timing target-trial emulation with explicit causal assumptions"
   ],
-  "record_type": "validated-research-evidence"
+  "record_type": "validated-research-evidence",
+  "nvidia_gpu_benchmark_scope": "User-executed Google Colab Tesla T4 run: matched identical-weight synthetic inference only; NOT NVIDIA employment or an NVIDIA-hosted study, full clinical pipeline, or patient outcomes"
 }
