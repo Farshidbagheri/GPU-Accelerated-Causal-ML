@@ -1,6 +1,6 @@
 # Research-to-implementation traceability
 
-The [doctoral research proposal](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML) and NVIDIA fellowship proposal share one primary scientific target:
+The doctoral dissertation research plan and the separately maintained NVIDIA Graduate Fellowship proposal share one primary scientific target. The proposal is **not** a file in this repository and should not be confused with its source-code evidence:
 
 > For a patient with suspected sepsis at a defined ED decision time, how does the **causal harm from additional delay** in first IV antibiotic administration vary with patient history, and what uncertainty-qualified initiation window can the data support?
 
