@@ -71,6 +71,11 @@ def check_publication_integrity() -> None:
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     assert "cff-version: 1.2.0" in citation
     assert "type: software" in citation
+    assert "license: MIT" in citation
+    assert "version: 0.1.0" in citation
+    software_license = (ROOT / "LICENSE").read_text(encoding="utf-8")
+    assert "MIT License" in software_license
+    assert "Farshid Bagheri Saravi" in software_license
     assert "Farshid" in citation and "Bagheri Saravi" in citation
     assert not (ROOT / ".zenodo.json").exists(), "A .zenodo.json file would override CITATION.cff"
     assert (ROOT / "data" / "LICENSE.txt").exists()
