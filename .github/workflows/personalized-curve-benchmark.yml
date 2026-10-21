@@ -1,0 +1,37 @@
+name: Simulated first-dose risk curves and compute profile
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - src/personalized_delay_synthetic.py
+      - scripts/benchmark_synthetic_cpu_cuda.py
+      - tests/test_personalized_delay_synthetic.py
+      - .github/workflows/personalized-curve-benchmark.yml
+permissions:
+  contents: read
+jobs:
+  curve-reproduction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install scientific CPU dependencies
+        run: |
+          python -m pip install "numpy>=1.26,<3" "pytest>=8,<10" "psutil>=5,<8"
+          python -m pip install "torch==2.5.1" --index-url https://download.pytorch.org/whl/cpu
+      - name: Validate synthetic oracle and factual-only training
+        run: python -m pytest -q tests/test_personalized_delay_synthetic.py
+      - name: Train synthetic individualized dose-timing curves on three seeds
+        run: python src/personalized_delay_synthetic.py --seeds 41,42,43 --patients 3200 --epochs 70 --oracle-draws 64 --out results/individualized-risk-curves.json
+      - name: Benchmark available backends (do not invent CUDA results)
+        run: python scripts/benchmark_synthetic_cpu_cuda.py --seeds 41,42,43 --patients 3200 --epochs 70 --oracle-draws 64 --out results/compute-profiling.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-personalized-risk-curve-results
+          path: |
+            results/individualized-risk-curves.json
+            results/compute-profiling.json
+          retention-days: 14
