@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+results/
+data/raw/
+data/private/
+.env
+.env.*
+*.pem

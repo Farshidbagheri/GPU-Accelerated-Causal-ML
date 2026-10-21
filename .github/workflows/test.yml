@@ -1,0 +1,27 @@
+name: Test and descriptive demo audit
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Real demo aggregate audit
+        run: python scripts/run_pilot.py --data data --out results --offsets 30,60,120
+      - name: Upload aggregate-only report
+        uses: actions/upload-artifact@v4
+        with:
+          name: descriptive-demo-aggregate
+          path: results/aggregate_audit.json
+          retention-days: 14
