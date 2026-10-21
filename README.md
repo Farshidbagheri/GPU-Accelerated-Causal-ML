@@ -87,6 +87,10 @@ python scripts/run_pilot.py --data data --out results --offsets 30,60,120
 
 Separate model jobs install their own dependencies. Standard hosted GitHub Actions runners here provide CPU; they are **not** evidence of GPU execution.
 
+## Citation and long-term research preservation
+
+Citation metadata is provided in [CITATION.cff](CITATION.cff). A [Zenodo-linked release and DOI](docs/zenodo-publication-guide.md) are **planned, not yet issued**. The first research-software release is intended to preserve source, executed Tesla T4 notebook and traceable synthetic results. A DOI would identify a citable version, **not** certify clinical accuracy or establish exclusive IP rights.
+
 ## Data, licenses and attribution
 
 The checked-in ED data are the **public MIMIC-IV-ED Demo v2.2**, not the credential-restricted full dataset. Source: Johnson et al. (2023), PhysioNet, [DOI 10.13026/jzz5-vs76](https://doi.org/10.13026/jzz5-vs76), **Open Data Commons Open Database License 1.0**. Source files and hashes are preserved; [CI checks the distribution hashes](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39542809361).

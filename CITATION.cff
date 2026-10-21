@@ -1,9 +1,26 @@
 cff-version: 1.2.0
-message: "If you use this research code, cite this software repository and the underlying dataset and articles as appropriate."
+message: "Please cite this research software by its version-specific Zenodo DOI once released, and cite the original PhysioNet dataset independently where relevant."
 type: software
-title: "GPU-Accelerated Causal Machine Learning: Reproducible Research Benchmarks"
+title: "GPU-Accelerated Causal Machine Learning: Reproducible Benchmarks for Decision-Time Reliability and Synthetic Antibiotic-Timing Research"
+abstract: >-
+  Reproducible scientific software for temporal data-integrity audits, simulation-based
+  causal estimation, synthetic individualized treatment-start risk curves, and matched
+  CPU/CUDA experiments. A Google Colab Tesla T4 benchmark measured faster identical-weight
+  inference for a synthetic workload. The public MIMIC-IV-ED Demo analysis audits
+  documentation timestamps only; no patient-level causal antibiotic effects or clinical
+  treatment policies have been established.
 authors:
   - family-names: Bagheri Saravi
     given-names: Farshid
+    affiliation: Case Western Reserve University
+keywords:
+  - causal machine learning
+  - sepsis
+  - clinical treatment timing
+  - reproducible research software
+  - CUDA
+  - GPU benchmarking
+  - electronic health records
+  - longitudinal causal inference
 url: "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML"
 repository-code: "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML"
