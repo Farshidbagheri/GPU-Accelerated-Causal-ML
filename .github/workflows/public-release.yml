@@ -1,4 +1,4 @@
-name: Public release: verify licensed demo data
+name: "Public release - verify licensed demo data"
 on:
   push:
     paths:
