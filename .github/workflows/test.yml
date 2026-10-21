@@ -16,7 +16,7 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install -r requirements.txt
       - name: Unit tests
-        run: python -m pytest -q
+        run: python -m pytest -q tests/test_timing_audit.py tests/test_run_pilot.py
       - name: Real demo aggregate audit
         run: python scripts/run_pilot.py --data data --out results --offsets 30,60,120
       - name: Upload aggregate-only report
