@@ -13,7 +13,7 @@ DATA=BASE/"data"
 EXPECTED={
     "diagnosis.csv.gz","edstays.csv.gz","medrecon.csv.gz",
     "pyxis.csv.gz","triage.csv.gz","vitalsign.csv.gz",
-    "LICENSE.txt","SHA256SUMS.txt"
+    "LICENSE.txt","SHA256SUMS.txt","README.md"
 }
 def verify(root:Path=DATA)->dict:
     actual={p.name for p in root.iterdir() if p.is_file()}
@@ -29,7 +29,7 @@ def verify(root:Path=DATA)->dict:
         observed=hashlib.sha256((root/name).read_bytes()).hexdigest()
         if digest.lower()!=observed:
             raise AssertionError(f"SHA256 mismatch for {name}")
-    assert names==EXPECTED-{"SHA256SUMS.txt"}
+    assert names==EXPECTED-{"SHA256SUMS.txt","README.md"}
     return {"verified_demo_files":len(names),"all_manifest_hashes_match":True,
             "source":"MIMIC-IV-ED Demo v2.2, PhysioNet",
             "doi":"10.13026/jzz5-vs76",

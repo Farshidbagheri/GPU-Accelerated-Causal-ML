@@ -69,6 +69,6 @@ The checked-in ED data are the **public MIMIC-IV-ED Demo v2.2**, not the credent
 
 [Data and licensing](docs/data-and-licensing.md) · [Reproducibility protocol](docs/reproducibility.md)
 
-**Code license:** No open-source software license has been assigned to the original Python code. The data's ODbL license does not automatically license that code. Do not upload credential-restricted data, identifiable records, secrets, or unapproved institutional data here.
+**Data folder:** [source, table descriptions and usage boundaries](data/README.md). **External models:** [source links and exact validation status](models/README.md).\n\n**Code license:** No open-source software license has been assigned to the original Python code. The data's ODbL license does not automatically license that code. Do not upload credential-restricted data, identifiable records, secrets, or unapproved institutional data here.
 
 **Research:** Farshid Bagheri Saravi, Case Western Reserve University.
