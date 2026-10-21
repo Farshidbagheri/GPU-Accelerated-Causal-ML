@@ -17,13 +17,27 @@ This repository supports doctoral research on the causal effects of antibiotic i
 4. **Reliability gates** — test overlap, temporal sensitivity, known-truth error, uncertainty and failure conditions.
 5. **Computational profiling** — benchmark the same validated workload on CPU and CUDA, accounting for training, memory, data transfer and numerical agreement.
 
-The first four components are represented by **partial experiments** below. Matched CUDA benchmarking is a **planned experiment**, not an achieved speedup. See [technical architecture](docs/architecture.md).
+Partial scientific experiments are described below. **A small synthetic CPU/CUDA performance benchmark has now been measured**; full GPU acceleration of the proposed longitudinal causal validation pipeline is still a research objective. See [technical architecture](docs/architecture.md).
 
 ## New: simulated individualized risk-from-waiting curves
 
-A completed [factual-only synthetic treatment-start experiment](docs/personalized-risk-curve-experiment.md) learns patient-dependent risk curves across five simulated intervention times. On three GitHub-tested seeds, mean curve RMSE was **0.0381** for an IPW neural learner, **0.0411** for an unweighted neural learner and **0.1989** for unadjusted group means, against *known simulator* counterfactual truth. These are not effects of actual antibiotics. The [matching CPU/CUDA profiler](scripts/benchmark_synthetic_cpu_cuda.py) ran on CPU; CUDA was unavailable, so there is **no measured GPU speedup**.
+A completed [factual-only synthetic treatment-start experiment](docs/personalized-risk-curve-experiment.md) learns patient-dependent risk curves across five simulated intervention times. On three GitHub-tested seeds, mean curve RMSE was **0.0381** for an IPW neural learner, **0.0411** for an unweighted neural learner and **0.1989** for unadjusted group means, against *known simulator* counterfactual truth. These are not effects of actual antibiotics. The initial GitHub-hosted profiler ran on CPU only; a **subsequent user-executed Google Colab Tesla T4 run measured CUDA inference** on the same family of synthetic timing-response experiments.
 
 ![Known synthetic timing-response and estimated curve](figures/personalized-risk-curves.svg)
+
+## Real Tesla T4 benchmark (Colab, 21 October 2026)
+
+Using **identical trained model weights** for CPU and CUDA synthetic inference, a Google Colab Tesla T4 run measured:
+
+| Workload | CPU median | CUDA median | Observed ratio | Numerical check |
+| --- | ---: | ---: | ---: | --- |
+| 3,200 synthetic individuals × 5 timing options | 26.820 ms | 1.259 ms | 21.30× | Max difference 1.19×10⁻⁷ |
+| **160,000 synthetic individuals × 5 options** | **237.679 ms** | **20.659 ms** | **11.50×** | Max difference 1.19×10⁻⁷ |
+| End-to-end training + evaluation (three seeds) | 1.592 s | 1.199 s | 1.33× | Independently trained; no weight parity |
+
+These are **three-repeat, single-session synthetic measurements**, not multi-platform performance guarantees. The CPU and GPU training results use independently fitted models; their 1.33× result is exploratory. There is **no measured causal effect in sepsis patients**.
+
+[Executed original Colab notebook and exact sources](experiments/colab-t4/README.md) · [Full measured benchmark provenance](reports/colab-runs/2026-10-21-t4/README.md)
 
 ## Results supported by executed code
 
@@ -36,13 +50,14 @@ A completed [factual-only synthetic treatment-start experiment](docs/personalize
 
 ![Synthetic known-truth error comparison](figures/synthetic_counterfactual_pehe.svg)
 
-**Important boundary:** No CUDA speedup or clinically identified effect of delayed antibiotic administration has been measured in this repository. Full T4 and VTDNet paper metrics have **not** been reproduced.
+**Important boundary:** A CUDA speedup was measured only for a synthetic inference workload; no CUDA throughput or clinically identified effect of delayed antibiotic administration in real EHR has been established. Full T4 and VTDNet paper metrics have **not** been reproduced.
 
 ## Repository layout
 
 ```text
 .github/workflows/     Continuous integration and separately scoped experiments
 data/                  Open MIMIC-IV-ED Demo tables + original license/checksums
+experiments/           Executed Colab notebook with exact benchmark sources and outputs
 docs/                  Architecture, reproducibility, experiment matrix, data governance
 figures/               Editable research diagrams and result summaries
 models/                External-method registry and scope of reproduction
@@ -78,6 +93,8 @@ The checked-in ED data are the **public MIMIC-IV-ED Demo v2.2**, not the credent
 
 [Data and licensing](docs/data-and-licensing.md) · [Reproducibility protocol](docs/reproducibility.md)
 
-**Data folder:** [source, table descriptions and usage boundaries](data/README.md). **External models:** [source links and exact validation status](models/README.md).\n\n**Code license:** No open-source software license has been assigned to the original Python code. The data's ODbL license does not automatically license that code. Do not upload credential-restricted data, identifiable records, secrets, or unapproved institutional data here.
+**Data folder:** [source, table descriptions and usage boundaries](data/README.md). **External models:** [source links and exact validation status](models/README.md).
+
+**Code license:** No open-source software license has been assigned to the original Python code. The data's ODbL license does not automatically license that code. Do not upload credential-restricted data, identifiable records, secrets, or unapproved institutional data here.
 
 **Research:** Farshid Bagheri Saravi, Case Western Reserve University.

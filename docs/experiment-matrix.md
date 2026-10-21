@@ -7,7 +7,7 @@
 | Our nonlinear S-learner benchmark | **Independent synthetic** simulation | Three independent patient-disjoint seeds; neural PEHE-RMSE 0.287 vs Ridge 0.641 | Multi-step regime effects, clinical generalizability, GPU advantage |
 | VTDNet reduced architecture | Upstream source inspection and smoke test | CPU forward/backward and finite loss after device patch | Published PEHE, causal parameter recovery |
 | T4 code audit | Static integration review | Interface and missing-data blockers documented | Published time-to-treatment results |
-| Future CUDA benchmarking | Planned | CPU training baseline exists; CUDA option in PyTorch code | GPU runtime, speedup, fidelity validation |
+| Synthetic CUDA inference | **Measured** | Tesla T4, 160,000 synthetic people × 5 alternatives: CPU 237.679 ms vs CUDA 20.659 ms (11.50×), numeric error ≤ 1.19×10⁻⁷ | Full clinical pipeline and accelerated causal cross-fitting/resampling not benchmarked |
 
 See [results and exact provenance](../reports/research-evidence.md). This classification prevents method readiness from being mistaken for empirical validation.
 
