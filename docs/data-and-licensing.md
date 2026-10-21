@@ -21,7 +21,7 @@ The code's experimental findings do **not** report patient-level treatment effec
 1. Keep official public demo tables **only after** automated hashes pass.
 2. Do not add patient-level derived data outside the published Demo.
 3. Public GitHub visibility will expose the *Git commit history*, not only current files. Anyone making earlier mistakes must assess past commits before publishing; deleting sensitive files in a new commit would not remove their history.
-4. Repository code has **no general reuse license granted here**. The ODbL covers the original data, **not automatically our Python code**. A code license (MIT/BSD/Apache) can be chosen by the owner later; assigning it changes legal permissions.
+4. **Original code and accompanying original software documents use [MIT](../LICENSE)**, as approved by their author; the **bundled source database retains [ODbL 1.0](../data/LICENSE.txt)**. The MIT grant is not an override of the original database's licensing terms. Details: [RIGHTS_AND_LICENSES.md](../RIGHTS_AND_LICENSES.md).
 5. Models from others are linked to their original repositories; the author notebook is checked out at a pinned SHA during GitHub Actions. No third-party source is bundled here.
 6. Results are explicitly limited to synthetic toy policies, synthetic one-step and individualized timing-response estimators, descriptive EHR documentation timing, and a **single-session Tesla T4 CUDA/CPU inference benchmark on synthetic inputs**. The latter measured an 11.50× CUDA inference speedup for 160,000 simulated people × five options, **not** full causal-pipeline throughput or clinical antibiotic efficacy. See the [measured Colab provenance](../reports/colab-runs/2026-10-21-t4/README.md).
 
