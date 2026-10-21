@@ -15,6 +15,10 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install -r requirements.txt
+      - name: Validate research citation, evidence records and relative links
+        run: python scripts/check_research_metadata.py
+      - name: Verify bundled public PhysioNet Demo checksums
+        run: python scripts/verify_public_demo.py
       - name: Unit tests
         run: python -m pytest -q tests/test_timing_audit.py tests/test_run_pilot.py
       - name: Real demo aggregate audit
