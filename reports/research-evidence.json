@@ -1,5 +1,4 @@
 {
-  "research_package_version": "6.0",
   "verified_at_utc": "2026-10-21",
   "clinical_effect_estimated": false,
   "nvidia_gpu_benchmark_performed": false,
@@ -70,5 +69,6 @@
     "Author-paper comparators on like-for-like synthetic DGP",
     "GPU timing on a real CUDA runner with matched workload",
     "Multi-step antibiotic timing target-trial emulation with explicit causal assumptions"
-  ]
+  ],
+  "record_type": "validated-research-evidence"
 }

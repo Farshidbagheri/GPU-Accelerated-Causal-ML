@@ -1,4 +1,4 @@
-# MIMIC-IV-ED Demo — Decision-time documentation audit (pilot v1)
+# MIMIC-IV-ED Demo — Decision-time documentation audit
 
 **Source:** MIMIC-IV-ED Demo v2.2, publicly released, deidentified.  
 **Reproduction:** [GitHub Actions run 39519816023](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39519816023), commit `7f90eeb8c9eeeafc941f0c9197537209e70c8bed`.  

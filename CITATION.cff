@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this research code, cite this software repository and the underlying dataset and articles as appropriate."
+type: software
+title: "GPU-Accelerated Causal Machine Learning: Reproducible Research Benchmarks"
+authors:
+  - family-names: Saravi
+    given-names: Farshid Bagheri
+url: "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML"
+repository-code: "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML"

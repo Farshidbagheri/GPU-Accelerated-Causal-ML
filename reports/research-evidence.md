@@ -1,4 +1,4 @@
-# Completed verification cycle — NVIDIA research evidence package v6
+# Research evidence and validation record
 
 **Date:** 21 October 2026  
 **Scope:** End-to-end software experiment verification for a GPU-accelerated causal ML dissertation proposal.  
@@ -51,8 +51,8 @@ Do **not** quote a GPU gain, sepsis benefit or claim T4/VTDNet replications. Con
 
 - [Main independent benchmark script](../src/longitudinal_synthetic_benchmark.py)
 - [Independent model CI](../.github/workflows/causal-benchmark.yml)
-- [Authors' 2026 synthetic experiment](offbyabeat_toy_reproduction.md)
+- [Authors' 2026 synthetic experiment](temporal-alignment.md)
 - [VTDNet original-code audit](../models/vtdnet/README.md)
-- [ED Demo time audit](ed_demo_timing_audit_v1.md)
+- [ED Demo time audit](ed-timing-audit.md)
 
 **Status:** Software/experimental feasibility loop completed for the scope above. The *full dissertation research problem* and clinical identification remain open and are not being represented as completed.
