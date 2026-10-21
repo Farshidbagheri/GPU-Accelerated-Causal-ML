@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380">
-<rect width="900" height="380" fill="white"/><text x="26" y="39" font-size="23" font-family="Arial" font-weight="bold" fill="#142f44">Simulated individualized risk-from-waiting curves</text><text x="26" y="63" font-family="Arial" font-size="14" fill="#566e7c">True synthetic reference vs learned IPW curve, first seed; no clinical data</text>
-<g stroke="#cbd5dd" stroke-width="1"><line x1="120" y1="300" x2="795" y2="300"/><line x1="120" y1="220" x2="795" y2="220"/><line x1="120" y1="140" x2="795" y2="140"/><line x1="120" y1="70" x2="795" y2="70"/></g>
-<g font-size="15" font-family="Arial" fill="#44586a"><text x="58" y="305">0.05</text><text x="58" y="226">0.15</text><text x="58" y="146">0.25</text><text x="58" y="76">0.35</text><text x="102" y="330">t=0</text><text x="270" y="330">t=1</text><text x="438" y="330">t=2</text><text x="606" y="330">t=3</text><text x="768" y="330">none</text></g>
-<polyline points="120,259 288,235 456,201 624,155 792,89" fill="none" stroke="#0f7b74" stroke-width="4"/>
-<polyline points="120,268 288,238 456,254 624,192 792,152" fill="none" stroke="#a6613c" stroke-width="3" stroke-dasharray="8 5"/>
-<g fill="#0f7b74"><circle cx="120" cy="259" r="5"/><circle cx="288" cy="235" r="5"/><circle cx="456" cy="201" r="5"/><circle cx="624" cy="155" r="5"/><circle cx="792" cy="89" r="5"/></g>
-<g font-size="15" font-family="Arial"><line x1="140" y1="356" x2="187" y2="356" stroke="#0f7b74" stroke-width="4"/><text x="200" y="361" fill="#203c52">Known synthetic reference</text><line x1="445" y1="356" x2="492" y2="356" stroke="#a6613c" stroke-width="3" stroke-dasharray="7 4"/><text x="503" y="361" fill="#203c52">Learned IPW curve</text></g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="395" viewBox="0 0 920 395" role="img" aria-label="Risk curves for five synthetic treatment-start times, known oracle versus learned IPW model.">
+<rect width="920" height="395" fill="#fff"/>
+<text x="32" y="42" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#193449">Simulated individualized timing-response study</text>
+<text x="32" y="70" font-family="Arial,sans-serif" font-size="14" fill="#58707e">Reference vs learned risk, first seed; synthetic truth, not clinical outcomes</text>
+<g stroke="#d1dde3" stroke-width="1"><line x1="128" y1="312" x2="822" y2="312"/><line x1="128" y1="234" x2="822" y2="234"/><line x1="128" y1="156" x2="822" y2="156"/><line x1="128" y1="78" x2="822" y2="78"/></g>
+<g font-family="Arial,sans-serif" font-size="14" fill="#59717d"><text x="71" y="318">0.05</text><text x="71" y="240">0.15</text><text x="71" y="162">0.25</text><text x="71" y="84">0.35</text><text x="116" y="338">t = 0</text><text x="283" y="338">t = 1</text><text x="453" y="338">t = 2</text><text x="617" y="338">t = 3</text><text x="781" y="338">none</text></g>
+<polyline fill="none" stroke="#137b77" stroke-width="4" points="128,270.3 300,246.4 472,213.8 644,168.6 816,105.3"/>
+<polyline fill="none" stroke="#b56642" stroke-width="3" stroke-dasharray="9 5" points="128,275.9 300,240.8 472,223.1 644,176.2 816,120.8"/>
+<g fill="#137b77"><circle cx="128" cy="270.3" r="4"/><circle cx="300" cy="246.4" r="4"/><circle cx="472" cy="213.8" r="4"/><circle cx="644" cy="168.6" r="4"/><circle cx="816" cy="105.3" r="4"/></g>
+<g font-family="Arial,sans-serif" font-size="15" fill="#254554"><line x1="135" y1="369" x2="190" y2="369" stroke="#137b77" stroke-width="4"/><text x="204" y="374">Known synthetic reference</text><line x1="455" y1="369" x2="509" y2="369" stroke="#b56642" stroke-width="3" stroke-dasharray="8 5"/><text x="526" y="374">Learned weighted curve</text></g></svg>

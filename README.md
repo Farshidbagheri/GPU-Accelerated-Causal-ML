@@ -19,6 +19,12 @@ This repository supports doctoral research on the causal effects of antibiotic i
 
 The first four components are represented by **partial experiments** below. Matched CUDA benchmarking is a **planned experiment**, not an achieved speedup. See [technical architecture](docs/architecture.md).
 
+## New: simulated individualized risk-from-waiting curves
+
+A completed [factual-only synthetic treatment-start experiment](docs/personalized-risk-curve-experiment.md) learns patient-dependent risk curves across five simulated intervention times. On three GitHub-tested seeds, mean curve RMSE was **0.0381** for an IPW neural learner, **0.0411** for an unweighted neural learner and **0.1989** for unadjusted group means, against *known simulator* counterfactual truth. These are not effects of actual antibiotics. The [matching CPU/CUDA profiler](scripts/benchmark_synthetic_cpu_cuda.py) ran on CPU; CUDA was unavailable, so there is **no measured GPU speedup**.
+
+![Known synthetic timing-response and estimated curve](figures/personalized-risk-curves.svg)
+
 ## Results supported by executed code
 
 | Evidence | Experiment and interpretation | Verification |
