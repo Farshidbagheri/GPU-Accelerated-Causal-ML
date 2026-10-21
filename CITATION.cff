@@ -1,7 +1,9 @@
 cff-version: 1.2.0
 version: 0.1.0
 license: MIT
-message: "Please cite this research software by its version-specific Zenodo DOI once released, and cite the original PhysioNet dataset independently where relevant."
+doi: 10.5281/zenodo.23530462
+date-released: 2026-10-21
+message: "Please cite version 0.1.0 using DOI 10.5281/zenodo.23530462, and cite the source PhysioNet MIMIC-IV-ED Demo dataset separately when relevant."
 type: software
 title: "GPU-Accelerated Causal Machine Learning: Reproducible Benchmarks for Decision-Time Reliability and Synthetic Antibiotic-Timing Research"
 abstract: >-
