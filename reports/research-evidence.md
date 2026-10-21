@@ -2,17 +2,19 @@
 
 **Date:** 21 October 2026  
 **Scope:** End-to-end software experiment verification for a GPU-accelerated causal ML dissertation proposal.  
-**Result:** One original authors' synthetic toy experiment successfully reproduced; one **new, independently designed and trained PyTorch counterfactual benchmark** completed with baselines on three seeds; one upstream VTDNet architecture compatibility test completed; public ED documentation audit preserved.
+**Result:** One original authors' synthetic toy experiment successfully reproduced; an independent trained synthetic counterfactual benchmark and a separate individualized timing-response simulation completed; one upstream VTDNet architecture compatibility test completed; public ED documentation audit preserved; and an original executed Google Colab Tesla T4 notebook plus matched synthetic CPU/CUDA inference timings archived. No patient-level clinical treatment effects were estimated.
 
 ## Evidence dashboard
 
-| Experiment | Verified result | GitHub Actions proof | Limits |
+| Experiment | Verified result | Verification / provenance | Limits |
 | --- | --- | --- | --- |
 | ED Demo | 222 visits, 1,038 vital-sign records; 5 tests | [Audit](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39530223244) | Documentation audit, no ITE |
 | Off by a Beat (2026) | 100 original notebook sweeps: reward 3.34337 vs 9.87805, **exact authors' notebook match** | [Original-author toy reproduction](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39530437176) | Toy simulation, no clinical reproduction |
 | Independent longitudinal causal model | Three patient-disjoint seeds: **PEHE 2.912 naive; 0.641 Ridge; 0.287 PyTorch** | [Causal model](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39531676558) | Fully synthetic, one-step effects, not original T4/VTDNet |
 | VTDNet (2025) | Reduced upstream architecture forward/backward passed after CPU device patch; potential batch-dependence flagged | [VTDNet inspection](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39532009883) | **No original VTDNet training, PEHE, or clinical claims** |
 | T4 (2023) | Code/data-interface barriers documented | [Readiness assessment](../models/t4/README.md) | No author paper reproduction |
+| Independent individualized synthetic timing curves | 3 seeds: mean IPW curve RMSE 0.038054; unweighted 0.041096; group means 0.198853 | [Experiment protocol and CI run](../docs/personalized-risk-curve-experiment.md) | Simulation truth, not patient-level causal effects |
+| Google Colab Tesla T4 synthetic inference | Identical-weight inference, 160,000 simulated people × 5 options: CPU 237.679 ms, CUDA 20.659 ms, 11.50×; max numeric difference 1.19×10⁻⁷ | [Executed notebook and exact sources](../experiments/colab-t4/README.md) · [Measured provenance](colab-runs/2026-10-21-t4/README.md) | Single-session three-repeat measurement; not a full clinical causal workload or original T4 paper reproduction |
 
 ![Measured PEHE](../figures/synthetic_counterfactual_pehe.svg)
 
@@ -35,7 +37,7 @@ We now have verified code for a measurable causal-estimation outcome, tests, and
 ### Critical methodological constraints
 
 - No real clinical causal effects, mortality benefit, antibiotic policy or dose recommendations were estimated.
-- No GPU speedup has been measured. Both successful model experiments ran on GitHub-hosted **CPU**.
+- GitHub-hosted model validation runs used **CPU**, but a **separate user-executed Google Colab Tesla T4** run subsequently measured a scoped 11.50× CUDA/CPU speedup for same-weight inference on a synthetic workload. End-to-end clinical causal-pipeline speedup was **not** measured. The independently trained end-to-end CPU/CUDA timing comparison (1.33×) is exploratory, not a weight-parity benchmark.
 - PEHE values here refer to known synthetic counterfactuals; PEHE cannot ordinarily be validated directly on observational patient EHR.
 - VTDNet upstream code contains broken interfaces and a patient-batch coupling to investigate; a compatibility smoke test is not a peer-reviewed reproduction.
 - T4's synthetic generator does not feed its main training pipeline as written; do not call it reproduced.
@@ -45,7 +47,7 @@ We now have verified code for a measurable causal-estimation outcome, tests, and
 
 A concise line is defensible: *"We implemented and validated a patient-disjoint, synthetic longitudinal causal-estimation benchmark with a PyTorch outcome model and baseline comparisons; a separate published 2026 toy experiment on timestamp alignment was exactly reproduced using the authors' released notebook."*
 
-Do **not** quote a GPU gain, sepsis benefit or claim T4/VTDNet replications. Confirm that this work belongs within the proposed dissertation methodology before including it as established progress.
+It is reasonable to quote the **11.50× measured synthetic same-weight inference ratio** only together with its workload, single-session Tesla T4 provenance and numerical-parity limit. Do **not** generalize this to the full causal pipeline, quote a sepsis benefit, or claim T4/VTDNet paper replications. Confirm that this work belongs within the proposed dissertation methodology before including it as established progress.
 
 ### Reproduce and inspect
 
