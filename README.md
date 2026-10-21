@@ -101,3 +101,5 @@ The separately scoped PyTorch experiments install their scientific dependencies 
 **From reproducible prototypes to reliable, scalable causal evidence.** The next phase will connect decision-time treatment definitions, uncertainty-aware timing-response analyses, and matched CPU/CUDA evaluation—testing not only **how fast** an analysis runs, but also **when its conclusions can be trusted**.
 
 *Farshid Bagheri Saravi · Case Western Reserve University*
+
+[Website](https://www.farshidbagheri.com) · [Google Scholar](https://scholar.google.com/citations?user=cnkhpngAAAAJ) · [ORCID](https://orcid.org/0000-0003-4213-5053) · [LinkedIn](https://www.linkedin.com/in/farshidbagherisaravi)
