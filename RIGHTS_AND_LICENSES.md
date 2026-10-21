@@ -16,11 +16,11 @@ The source is [PhysioNet's public 100-person ED Demo](https://physionet.org/cont
 
 ## 2. Independently written code, figures and documentation
 
-No blanket open-source license has been granted for the other original repository files at this stage. **Do not assume MIT, ODbL, CC BY, or other terms apply to all original source code and figures.** Public readability is not equivalent to permission to redistribute, modify or commercially exploit the original software.
+The repository author has selected the **[MIT License](LICENSE)** for their original source code, corresponding scripts, original diagrams, and accompanying original software documentation, copyright © 2026 Farshid Bagheri Saravi. The MIT grant permits modification, redistribution and commercial use **of that original software**, subject to preservation of the license and copyright notice.
 
-The person authorizing publication must confirm that they have the rights to release independently written material, including any applicable university or collaborator IP policies. This repository document does not resolve or assert legal ownership over collaborative or institutionally developed material.
+**Scope is important:** the MIT grant does **not** relicense the third-party *MIMIC-IV-ED Demo* database, its license text and source archives under `data/`, nor does it relicense unbundled upstream research code, papers, clinical records or other third-party material. The public demo keeps its **ODbL 1.0** terms. If you redistribute this mixed repository, preserve **both** the MIT notice for its original software and ODbL attribution/license for the public dataset.
 
-An explicit software license may be selected later by the authorized rights holder. Until then, the original code is not offered as open-source software; the license of the **public data** remains ODbL 1.0.
+The author has indicated the software is their own independent prototype, rather than MetroHealth-provided or university-funded collaborator code. The MIT grant concerns materials the author can lawfully license; it does not itself decide title to any material subject to a separate third-party agreement.
 
 ## 3. Third-party research software
 
@@ -30,7 +30,7 @@ The **MIMIC Code Repository** maintained by MIT-LCP is also different from **MIM
 
 ## 4. Zenodo release metadata gate
 
-A GitHub–Zenodo release archive may include files under different rights. Zenodo's [license guide](https://help.zenodo.org/docs/deposit/describe-records/licenses/) allows describing mixed-license records, but the author's choice must be reviewed before publication. Its general CC BY 4.0 default must **not** be treated as a blanket relicense of ODbL data or code with no chosen software license.
+A GitHub–Zenodo release archive may include files under different rights. Zenodo's [license guide](https://help.zenodo.org/docs/deposit/describe-records/licenses/) allows describing mixed-license records, but the author's choice must be reviewed before publication. The software metadata is **MIT** (declared in `CITATION.cff`); Zenodo's general CC BY 4.0 default must **not** be used in place of MIT or as a relicense of the ODbL public demonstration dataset.
 
 Before the first release: confirm ownership/permission for code and figures; verify source dataset files and notices using `python scripts/verify_public_demo.py`; confirm no secrets or restricted patient data are in current files **or prior Git history and workflow logs**; and confirm the final Zenodo record accurately identifies the applicable rights. [Publication procedure](docs/zenodo-publication-guide.md).
 
