@@ -1,0 +1,42 @@
+name: Reproduce original 2026 temporal-alignment toy example
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/reproduce_offbyabeat_toy.py
+      - .github/workflows/reproduce-offbyabeat-toy.yml
+
+permissions:
+  contents: read
+
+jobs:
+  authors-toy-subset:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: shengpu-tang/RL-Off-by-a-Beat
+          ref: 2f3e58c8a9186f68b22b0ab5b82c6f9366968ac6
+          path: upstream_offbyabeat
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install light toy experiment dependencies (CPU only)
+        run: python -m pip install "numpy>=1.26,<3" "gymnasium>=0.29,<2" "tqdm>=4.60,<5"
+      - name: Re-execute selected original notebook cells
+        run: |
+          python scripts/reproduce_offbyabeat_toy.py \
+            --notebook upstream_offbyabeat/synthetic/Toy_Problem.ipynb \
+            --output results/reproduction_offbyabeat_toy.json
+      - name: Preserve aggregate toy results
+        uses: actions/upload-artifact@v4
+        with:
+          name: offbyabeat-original-toy-subset
+          path: results/reproduction_offbyabeat_toy.json
+          retention-days: 14
