@@ -13,7 +13,7 @@ permissions:
 jobs:
   authors-toy-subset:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,9 +34,16 @@ jobs:
           python scripts/reproduce_offbyabeat_toy.py \
             --notebook upstream_offbyabeat/synthetic/Toy_Problem.ipynb \
             --output results/reproduction_offbyabeat_toy.json
+      - name: Re-execute original 100-run synthetic experiment
+        run: |
+          python scripts/reproduce_offbyabeat_toy.py --mode full-toy-sweep \
+            --notebook upstream_offbyabeat/synthetic/Toy_Problem.ipynb \
+            --output results/reproduction_offbyabeat_100_runs.json
       - name: Preserve aggregate toy results
         uses: actions/upload-artifact@v4
         with:
           name: offbyabeat-original-toy-subset
-          path: results/reproduction_offbyabeat_toy.json
+          path: |
+            results/reproduction_offbyabeat_toy.json
+            results/reproduction_offbyabeat_100_runs.json
           retention-days: 14

@@ -62,12 +62,60 @@ def reproduce(notebook_path: Path) -> dict:
     return result
 
 
+def reproduce_full_toy_sweep(notebook_path: Path) -> dict:
+    """Execute the authors' unmodified 'All Experiments' toy code cells."""
+    nb = json.loads(notebook_path.read_text(encoding="utf8"))
+    original_cells = [6, 7, 8, 29, 38, 39, 40, 41, 43, 45, 46, 48]
+    namespace = {"__name__": "__original_toy_sweep__"}
+    for i in original_cells:
+        c = nb["cells"][i]
+        assert c["cell_type"] == "code"
+        exec(compile("".join(c["source"]), str(notebook_path) + "#cell_" + str(i), "exec"), namespace)
+
+    orig = namespace["avg_π_orig"]
+    shifted = namespace["avg_π_shifted"]
+    v_orig = namespace["G_orig"]
+    v_shifted = namespace["G_shifted"]
+    assert len(namespace["all_results"]) == 100
+    assert np.isfinite(v_orig).all() and np.isfinite(v_shifted).all()
+    np.testing.assert_allclose(orig.sum(axis=1), 1)
+    np.testing.assert_allclose(shifted.sum(axis=1), 1)
+    per_run_disagreements = [
+        int((r["orig"]["π"].argmax(axis=1) != r["shifted"]["π"].argmax(axis=1)).sum())
+        for r in namespace["all_results"]
+    ]
+    return {
+        "paper": "Tang et al., npj Digital Medicine (2026)",
+        "doi": "10.1038/s41746-026-02625-2",
+        "experiment": "authors' 100-run synthetic all-experiments toy sweep",
+        "notebook": "synthetic/Toy_Problem.ipynb",
+        "upstream_commit": UPSTREAM_SHA,
+        "executed_unmodified_original_cell_indices": original_cells,
+        "n_runs": 100,
+        "n_episodes_per_run": 100,
+        "n_steps_per_episode": 100,
+        "average_policy_original": orig.tolist(),
+        "average_policy_shifted": shifted.tolist(),
+        "mean_true_environment_discounted_value_original": float(np.mean(v_orig)),
+        "mean_true_environment_discounted_value_shifted": float(np.mean(v_shifted)),
+        "true_environment_value_original_by_state": v_orig.tolist(),
+        "true_environment_value_shifted_by_state": v_shifted.tolist(),
+        "runs_with_at_least_one_different_state_action": int(sum(x > 0 for x in per_run_disagreements)),
+        "mean_different_actions_per_run_among_two_states": float(np.mean(per_run_disagreements)),
+        "full_clinical_paper_reproduced": False,
+        "gpu_used": False,
+        "real_clinical_data_used": False,
+        "warning": "Unmodified toy subset of paper only. Not the 750-state MIMIC-III benchmark."
+    }
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--notebook", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--mode", choices=["illustration", "full-toy-sweep"], default="illustration")
     args = parser.parse_args()
-    result = reproduce(args.notebook)
+    result = reproduce(args.notebook) if args.mode == "illustration" else reproduce_full_toy_sweep(args.notebook)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf8")
     print(json.dumps(result, indent=2))

@@ -18,3 +18,5 @@ The separate [reproduction workflow](../../.github/workflows/reproduce-offbyabea
 - NOT a GPU benchmark.
 
 The experiment needs only CPU. It uses 100 simulated trajectories of 10 steps and does not train a neural network. The other notebook and the MIMIC-III analysis must be tested separately before any claim about the paper's full results.
+
+The same workflow also executes the **unmodified original notebook cells 6,7,8,29,38,39,40,41,43,45,46,48** from the authors' *All Experiments* block: 100 separate randomized runs, each with 100 simulated episodes of 100 steps. It writes `reproduction_offbyabeat_100_runs.json` containing the average policy and its true-environment value. This adds toy-protocol fidelity but **still does not reproduce MIMIC-III sepsis results**, antibiotic effects, or GPU training.
