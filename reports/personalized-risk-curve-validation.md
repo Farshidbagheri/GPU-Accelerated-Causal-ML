@@ -21,6 +21,6 @@ The weighted learner reduced average curve error relative to a naive observation
 
 ## Compute check
 
-In the same GitHub run, the median **CPU end-to-end** experiment time was **0.76365 seconds**. CUDA state: `NOT_RUN_NO_CUDA`. **There is no measured CPU-to-GPU speedup.** Even a future benchmark requires identical hardware/software, model settings, explicit GPU synchronization, and end-to-end fidelity checks.
+In this **GitHub Actions CPU-only run**, the median **CPU end-to-end** experiment time was **0.76365 seconds**. CUDA state: `NOT_RUN_NO_CUDA`, so **this workflow did not measure a GPU speedup**. Separately, an [executed Google Colab Tesla T4 study](../experiments/colab-t4/README.md) subsequently measured an **11.50× CUDA/CPU same-weight inference ratio on 160,000 synthetic individuals × five alternatives** (237.679 ms CPU; 20.659 ms CUDA). The Colab notebook is **not identical** to the earlier GitHub implementation; this is a distinct, single-session synthetic inference result, not a retrospective claim of GPU execution in GitHub Actions or full longitudinal causal training acceleration. Future full-pipeline benchmarking still requires matched hardware/software conditions, numerical parity, uncertainty/coverage checks, and end-to-end fidelity.
 
 These findings do not establish clinical effectiveness, mortality changes or a safe antibiotic-delay policy. A clinical target trial remains future work.
