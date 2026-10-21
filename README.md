@@ -14,6 +14,14 @@ See the [**research evidence summary**](reports/RESEARCH_EVIDENCE_SUMMARY_v6.md)
 
 ![Independent model comparison](figures/synthetic_counterfactual_pehe.svg)
 
+## Public data and research boundaries
+
+- [Data source, checksum verification and ODbL license](docs/PUBLIC_DATA_AND_LICENSING.md)
+- [Exactly which models were run, and limitations](docs/EXPERIMENT_STATUS.md)
+- [GitHub Actions: source-data checksum verification](.github/workflows/public-release.yml)
+
+**Scope:** The repository name describes a GPU-acceleration *research objective*. No measured GPU speedup is claimed. Code and data have separate license considerations.
+
 ## Repository layout
 
 | Path | Purpose |

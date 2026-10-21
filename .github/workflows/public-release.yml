@@ -1,0 +1,23 @@
+name: Public release: verify licensed demo data
+on:
+  push:
+    paths:
+      - data/**
+      - scripts/verify_public_demo.py
+      - .github/workflows/public-release.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify exact demo distribution files using SHA256SUMS
+        run: python scripts/verify_public_demo.py
