@@ -1,0 +1,72 @@
+{
+  "paper": "Tang et al., npj Digital Medicine (2026)",
+  "doi": "10.1038/s41746-026-02625-2",
+  "experiment": "authors' 100-run synthetic all-experiments toy sweep",
+  "notebook": "synthetic/Toy_Problem.ipynb",
+  "upstream_commit": "2f3e58c8a9186f68b22b0ab5b82c6f9366968ac6",
+  "executed_unmodified_original_cell_indices": [
+    6,
+    7,
+    8,
+    29,
+    38,
+    39,
+    40,
+    41,
+    43,
+    45,
+    46,
+    48
+  ],
+  "n_runs": 100,
+  "n_episodes_per_run": 100,
+  "n_steps_per_episode": 100,
+  "average_policy_original": [
+    [
+      0.94,
+      0.06
+    ],
+    [
+      0.17,
+      0.83
+    ]
+  ],
+  "average_policy_shifted": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "mean_true_environment_discounted_value_original": 3.3433734931974763,
+  "mean_true_environment_discounted_value_shifted": 9.878048779630074,
+  "true_environment_value_original_by_state": [
+    1.8072289148526357,
+    4.879518071542317
+  ],
+  "true_environment_value_shifted_by_state": [
+    9.75609756011788,
+    9.99999999914227
+  ],
+  "runs_with_at_least_one_different_state_action": 94,
+  "mean_different_actions_per_run_among_two_states": 1.11,
+  "full_clinical_paper_reproduced": false,
+  "gpu_used": false,
+  "real_clinical_data_used": false,
+  "warning": "Unmodified toy subset of paper only. Not the 750-state MIMIC-III benchmark.",
+  "successful_github_actions_run": "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39530437176",
+  "reference_notebook_saved_output": {
+    "original_mean": 3.3433734931974763,
+    "shifted_mean": 9.878048779630074,
+    "matches_our_run": true
+  },
+  "single_run": {
+    "policy_disagreement": 0,
+    "mean_value_original": 9.878048779630074,
+    "mean_value_shifted": 9.878048779630074
+  },
+  "reproduction_scope": "Unmodified original notebook cells for synthetic full 100-run sweep; not clinical paper-wide reproduction."
+}

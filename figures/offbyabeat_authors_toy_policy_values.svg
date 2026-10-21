@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 390" role="img" aria-label="Reproduced authors toy policy values: 3.343 original and 9.878 shifted">
+<rect width="900" height="390" fill="#ffffff"/>
+<text x="34" y="48" font-family="Arial,sans-serif" fill="#14253b" font-weight="bold" font-size="25">Reproduced temporal-alignment toy experiment</text>
+<text x="34" y="76" font-family="Arial,sans-serif" fill="#566477" font-size="15">Tang et al. (2026) • Authors' unmodified notebook • 100 runs</text>
+<line x1="242" y1="307" x2="828" y2="307" stroke="#b8c1cc"/>
+<text x="32" y="154" font-size="19" font-family="Arial,sans-serif" fill="#14253b">Original alignment</text>
+<rect x="242" y="124" width="196" height="50" rx="6" fill="#667b91"/>
+<text x="448" y="158" font-size="21" font-family="Arial,sans-serif" font-weight="bold" fill="#14253b">3.343</text>
+<text x="32" y="250" font-size="19" font-family="Arial,sans-serif" fill="#14253b">Shifted alignment</text>
+<rect x="242" y="220" width="579" height="50" rx="6" fill="#137d88"/>
+<text x="826" y="255" font-size="21" font-family="Arial,sans-serif" font-weight="bold" fill="#14253b">9.878</text>
+<text x="34" y="348" font-family="Arial,sans-serif" font-size="14" fill="#5c6b7d">True-environment discounted toy reward; NOT a clinical performance or GPU metric.</text></svg>
