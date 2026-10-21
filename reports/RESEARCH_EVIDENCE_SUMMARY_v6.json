@@ -1,0 +1,74 @@
+{
+  "research_package_version": "6.0",
+  "verified_at_utc": "2026-10-21",
+  "clinical_effect_estimated": false,
+  "nvidia_gpu_benchmark_performed": false,
+  "tasks": [
+    {
+      "id": "ed_demo",
+      "status": "verified",
+      "dataset": "public MIMIC-IV-ED Demo",
+      "unique_stays": 222,
+      "vital_sign_events": 1038,
+      "test_count": 5,
+      "run_url": "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39530223244",
+      "interpretation": "Descriptive time-of-documentation audit; no causal effect"
+    },
+    {
+      "id": "off_by_a_beat",
+      "status": "authors_synthetic_experiment_reproduced",
+      "upstream_commit": "2f3e58c8a9186f68b22b0ab5b82c6f9366968ac6",
+      "runs": 100,
+      "episodes_per_run": 100,
+      "time_steps_per_episode": 100,
+      "value_original": 3.3433734931974763,
+      "value_shifted": 9.878048779630074,
+      "policy_disagreements_at_least_one_state": 94,
+      "author_notebook_output_exact_match": true,
+      "run_url": "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39530437176"
+    },
+    {
+      "id": "independent_causal_benchmark",
+      "status": "synthetic_trained_model_verified",
+      "runs": 3,
+      "patient_count_per_run": 1200,
+      "time_steps_per_patient": 6,
+      "holdout_patients_per_run": 180,
+      "unit_tests": 3,
+      "pehe_rmse_mean": {
+        "naive": 2.912222,
+        "ridge": 0.640825,
+        "pytorch_neural": 0.287209
+      },
+      "ate_absolute_error_mean": {
+        "naive": 2.844957,
+        "ridge": 0.15251,
+        "pytorch_neural": 0.027648
+      },
+      "neural_pehe_reduction_relative_to_ridge_percent": 55.18,
+      "run_url": "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39531676558",
+      "claims": "Not a reproduction of VTDNet or T4; no inference for real patients"
+    },
+    {
+      "id": "vtdnet",
+      "status": "reduced_architecture_smoke_passed_full_reproduction_blocked",
+      "upstream_commit": "3770f32e0479dab16a97fc11849dfaa1fc717153",
+      "gradient_parameter_tensors": 206,
+      "batch_attention_max_absolute_change": 0.3577899,
+      "run_url": "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39532009883",
+      "claims": "Only forward/backward compatibility with CPU device patch, NOT trained ITE or original PEHE"
+    },
+    {
+      "id": "t4",
+      "status": "full_reproduction_blocked",
+      "source": "https://github.com/ruoqi-liu/T4",
+      "reason": "Synthetic generator output incompatible with expected training input and missing private preprocessed data"
+    }
+  ],
+  "remaining_research_gates": [
+    "Permissioned longitudinal treatment administration and outcomes",
+    "Author-paper comparators on like-for-like synthetic DGP",
+    "GPU timing on a real CUDA runner with matched workload",
+    "Multi-step antibiotic timing target-trial emulation with explicit causal assumptions"
+  ]
+}

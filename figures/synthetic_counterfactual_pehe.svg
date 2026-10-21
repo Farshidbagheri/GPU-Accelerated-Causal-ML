@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 970 370" role="img" aria-label="Three-seed mean PEHE of synthetic one-step estimators: naive 2.912222, Ridge 0.640825, PyTorch neural 0.287209">
+<rect width="970" height="370" fill="#ffffff"/>
+<text x="35" y="48" font-size="26" font-family="Arial,sans-serif" font-weight="bold" fill="#172b43">Independent synthetic counterfactual benchmark</text>
+<text x="35" y="79" font-size="16" font-family="Arial,sans-serif" fill="#596e83">Mean PEHE-RMSE across three seeds • Lower is better • 1,200 patients per seed</text>
+<text x="35" y="150" font-size="18" font-family="Arial,sans-serif" fill="#26394e">Naive difference</text>
+<rect x="272" y="124" width="565" height="38" rx="5" fill="#70839c"/><text x="848" y="151" font-size="20" font-family="Arial,sans-serif" font-weight="bold" fill="#1c2d40">2.912</text>
+<text x="35" y="220" font-size="18" font-family="Arial,sans-serif" fill="#26394e">Ridge adjusted</text>
+<rect x="272" y="194" width="124" height="38" rx="5" fill="#496b92"/><text x="410" y="222" font-size="20" font-family="Arial,sans-serif" font-weight="bold" fill="#1c2d40">0.641</text>
+<text x="35" y="291" font-size="18" font-family="Arial,sans-serif" fill="#26394e">PyTorch neural</text>
+<rect x="272" y="265" width="56" height="38" rx="5" fill="#1c8b80"/><text x="342" y="293" font-size="20" font-family="Arial,sans-serif" font-weight="bold" fill="#1c2d40">0.287</text>
+<text x="35" y="347" font-family="Arial,sans-serif" fill="#647688" font-size="13">Training: factual outcomes only; held-out patients; no clinical effects or GPU acceleration measured.</text>
+</svg>

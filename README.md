@@ -1,6 +1,18 @@
-# Decision-Time Data Audit for Longitudinal Clinical Research
+# GPU-Accelerated Causal ML — Reproducible Research Benchmarks
 
 A reproducible **documentation-time quality** pilot using the public, deidentified [MIMIC-IV-ED Demo v2.2](https://physionet.org/content/mimic-iv-ed-demo/2.2/). It quantifies how retrospective clinical features could include documentation recorded after a hypothetical decision cutoff. This is **not** a sepsis treatment-effect estimator or clinical decision system.
+
+## Verified research milestones
+
+See the [**research evidence summary**](reports/RESEARCH_EVIDENCE_SUMMARY_v6.md) for independently verified results and study limitations.
+
+- **Published 2026 simulation reproduced:** original Off by a Beat toy notebook; 100 runs; values 3.34337 vs 9.87805 exactly matched.
+- **Independent PyTorch causal model trained:** 3 synthetic patient-disjoint seeds; PEHE 0.287 vs Ridge 0.641 and naive 2.912. Not a paper reproduction.
+- **VTDNet upstream architecture:** CPU smoke forward/backward passed with limited device patch; full reported PEHE remains unreproduced.
+- **Public real-data audit:** MIMIC-IV-ED Demo; 222 ED stays; 1,038 documentation events; not causal inference.
+- **No CUDA benchmark or clinical antibiotic-treatment benefit has been established.**
+
+![Independent model comparison](figures/synthetic_counterfactual_pehe.svg)
 
 ## Repository layout
 
@@ -17,7 +29,7 @@ A reproducible **documentation-time quality** pilot using the public, deidentifi
 
 ```bash
 python -m pip install -r requirements.txt
-python -m pytest -q
+python -m pytest -q tests/test_timing_audit.py tests/test_run_pilot.py
 python scripts/run_pilot.py --data data --out results --offsets 30,60,120
 ```
 
