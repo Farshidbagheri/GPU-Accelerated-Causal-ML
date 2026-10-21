@@ -90,7 +90,7 @@ The separately scoped PyTorch experiments install their scientific dependencies 
 
 **Dataset:** Johnson, A., Bulgarelli, L., Pollard, T., Celi, L. A., Horng, S., & Mark, R. (2023). *MIMIC-IV-ED Demo v2.2*. PhysioNet. [DOI: 10.13026/jzz5-vs76](https://doi.org/10.13026/jzz5-vs76). The six bundled, byte-preserved public demonstration tables are licensed under **Open Data Commons ODbL 1.0**, **not MIT**. The [original license](data/LICENSE.txt) and checksums are retained. The **credential-restricted full MIMIC-IV / MIMIC-IV-ED datasets are not included**.
 
-**Independent code:** no blanket open-source software license has yet been granted. **Do not apply the dataset's ODbL or Zenodo's CC BY default to the original code.** Upstream paper implementations retain their own licenses and are linked/pinned rather than redistributed here. Read the [file-by-file rights statement](RIGHTS_AND_LICENSES.md) before redistribution or publication.
+**Original software and its accompanying original documentation:** [MIT License](LICENSE), copyright © 2026 Farshid Bagheri Saravi. **This MIT grant does not cover the independently copyrighted MIMIC-IV-ED Demo data**, which remain [ODbL 1.0](data/LICENSE.txt), or unbundled third-party code (original authors' licenses apply). The Zenodo software-record license should read **MIT**, while the dataset's original ODbL attribution and license are retained. See [file-by-file rights](RIGHTS_AND_LICENSES.md).
 
 **Citation:** [`CITATION.cff`](CITATION.cff) describes the research software. [A Zenodo DOI is planned but **not yet issued**](docs/zenodo-publication-guide.md). A software DOI would preserve a particular early-stage research release; it would **not** certify treatment safety, scientific novelty, or causal validity.
 
