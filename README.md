@@ -1,5 +1,7 @@
 # GPU-Accelerated Causal Machine Learning
 
+[![DOI](https://zenodo.org/badge/1427515176.svg)](https://doi.org/10.5281/zenodo.23530461)
+
 **Decision-time reliability · Synthetic treatment-timing experiments · Measured CUDA inference**
 
 > **Status: early research-software prototype.** Supports a Ph.D. research plan on the causal effects of antibiotic initiation timing in sepsis and its GPU-computing evaluation. This repository contains **completed, carefully scoped pilot experiments**, not a validated antibiotic-timing policy, medical product, or a novel clinical effect estimate.
@@ -92,7 +94,7 @@ The separately scoped PyTorch experiments install their scientific dependencies 
 
 **Original software and its accompanying original documentation:** [MIT License](LICENSE), copyright © 2026 Farshid Bagheri Saravi. **This MIT grant does not cover the independently copyrighted MIMIC-IV-ED Demo data**, which remain [ODbL 1.0](data/LICENSE.txt), or unbundled third-party code (original authors' licenses apply). The Zenodo software-record license should read **MIT**, while the dataset's original ODbL attribution and license are retained. See [file-by-file rights](RIGHTS_AND_LICENSES.md).
 
-**Citation:** [`CITATION.cff`](CITATION.cff) describes the research software. [A Zenodo DOI is planned but **not yet issued**](docs/zenodo-publication-guide.md). A software DOI would preserve a particular early-stage research release; it would **not** certify treatment safety, scientific novelty, or causal validity.
+**Citation:** The first research-software archive is **v0.1.0**, [version-specific DOI **10.5281/zenodo.23530462**](https://doi.org/10.5281/zenodo.23530462) ([GitHub Release](https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/releases/tag/v0.1.0)). For the evolving project across future releases, use the [concept DOI **10.5281/zenodo.23530461**](https://doi.org/10.5281/zenodo.23530461). [`CITATION.cff`](CITATION.cff) contains the software citation metadata. The badge at the top links to the concept DOI. A DOI preserves a citable software release; it does **not** certify treatment safety, scientific novelty or causal validity. **The frozen v0.1.0 archive predates this README DOI-badge update**, which is a normal post-archive change on `main`.
 
 **Research author:** Farshid Bagheri Saravi · Case Western Reserve University
 
