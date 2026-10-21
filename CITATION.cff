@@ -3,7 +3,7 @@ message: "If you use this research code, cite this software repository and the u
 type: software
 title: "GPU-Accelerated Causal Machine Learning: Reproducible Research Benchmarks"
 authors:
-  - family-names: Saravi
-    given-names: Farshid Bagheri
+  - family-names: Bagheri Saravi
+    given-names: Farshid
 url: "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML"
 repository-code: "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML"

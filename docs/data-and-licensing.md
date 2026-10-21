@@ -10,6 +10,8 @@ This repository currently carries **only** the openly released **MIMIC-IV-ED Dem
 - `SHA256SUMS.txt` originally lists paths under `ed/`; in this repository the `ed/` CSVs are flattened under `data/`. [The release verification script](../scripts/verify_public_demo.py) adjusts paths **without editing the source hashes**.
 - A scheduled/manual GitHub Action validates the 7 original distribution files against their unaltered manifest and disallows additional tracked files in `data/`.
 
+**Distribution integrity:** The checked-in `SHA256SUMS.txt` was compared against the [official PhysioNet manifest](https://physionet.org/files/mimic-iv-ed-demo/2.2/SHA256SUMS.txt) on October 21, 2026; all seven listed checksums agree. The GitHub integrity workflow also verifies those hashes against the bundled data and license files.
+
 **Important distinction:** unrestricted public **Demo** is not the full MIMIC-IV or MIMIC-IV-ED database. The full databases require PhysioNet credentialed access and a DUA. Never commit full database extracts, even to a private GitHub repository, without independent written authorization. Never add MetroHealth, AmsterdamUMCdb, identifiable records or clinical credentials.
 
 The code's experimental findings do **not** report patient-level treatment effects. All published reports in this repository are aggregate descriptive counts or **simulated** counterfactual outcomes.
