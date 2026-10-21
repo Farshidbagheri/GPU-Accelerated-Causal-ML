@@ -1,6 +1,6 @@
 # Zenodo DOI publication and research-software release checklist
 
-**Status:** PREPARED ONLY. This document is not a Zenodo deposit or a DOI. The repository remains private until its owner changes visibility and personally approves release.
+**Status:** PUBLIC REPOSITORY; MIT SOFTWARE LICENSE PREPARED; **NO ZENODO DOI OR GITHUB RELEASE YET**. A Zenodo repository toggle enables future archiving but does not itself mint a DOI.
 
 ## Scientific object and attribution
 - Resource type: **Software**
@@ -14,21 +14,21 @@
 - If/when the author has an ORCID, add it to CITATION.cff or Zenodo; **do not invent** an identifier.
 
 ## Legal and publication gate
-- Full **GitHub source and commit history** become public after visibility change.
+- The repository is **already public**; its full Git commit history is publicly visible.
 - **Verified against the official PhysioNet dataset page and ODbL 1.0:** `data/` contains the freely distributed **MIMIC-IV-ED Demo v2.2** (100 public demo patients), not the credential-restricted full MIMIC-IV-ED dataset. Redistribution of the unchanged demo is permitted with ODbL notices and attribution. The six CSV archives, original LICENSE.txt, and SHA256SUMS.txt may remain bundled when those terms are preserved. It is **not MIT-licensed clinical data**. Official sources: https://physionet.org/content/mimic-iv-ed-demo/2.2/ and https://opendatacommons.org/licenses/odbl/1-0/ . For the file-by-file rights map, see [RIGHTS_AND_LICENSES.md](../RIGHTS_AND_LICENSES.md).
-- Original Python code currently has **no open-source license**. This does not stop public viewing, but granting code reuse rights, including commercial reuse, requires an explicit owner/IP decision.
-- **Zenodo's deposit form can default to CC BY 4.0. Do NOT accept a blanket CC BY default** for a mixed-license software+ODbL archive unless that is truly intended and authorized. Zenodo requires license metadata; use the site's mixed-license/custom-license options as needed, or consult the campus research/IP office before archiving the full GitHub tree.
+- The author has approved the **[MIT software license](../LICENSE)** for their original code, related original software diagrams and documentation. This does not override the **ODbL 1.0** applied to public MIMIC-IV-ED Demo data in `data/`.
+- The Zenodo **software-record license should be MIT**, explicitly present as `license: MIT` in `CITATION.cff`. Zenodo's CC BY 4.0 default must not be accepted for this software. The bundled public demo separately retains **ODbL 1.0** with its source license and attribution, as detailed in [RIGHTS_AND_LICENSES.md](../RIGHTS_AND_LICENSES.md). Verify the imported record's license metadata and description reflect this distinction.
 - **Specific university-policy gate:** CWRU's Intellectual Property Policy, sections 1 and 4, includes some software produced with university support, employees or equipment and addresses students as well as staff and faculty. Ownership of this exact prototype cannot be determined solely by reading the code. If university resources, employment obligations or clinical-collaboration contracts contributed to the work, confirm release permission before making its history public. Official: https://case.edu/research/sites/default/files/2024-03/Intellectual-Property-Policy.pdf .
-- **Automated Zenodo license-metadata gate:** the `CITATION.cff` currently does **not** declare a software license because no original-code rights grant has been approved. Zenodo's general license default of CC BY must **not** be accepted as licensing the entire mixed software-and-ODbL archive. Before issuing the first GitHub Release, determine (a) who can authorize publishing the original code and (b) how Zenodo will represent its rights and the ODbL dataset without falsely assigning rights. If automatic GitHub ingestion cannot represent this accurately, pause it and choose an appropriately described deposit/release path instead.
+- **Automated Zenodo metadata:** `CITATION.cff` includes `license: MIT` for the original software. The README and rights map make the bundled public Demo's **ODbL 1.0** explicit. When the initial DOI is created, inspect the actual Zenodo record; if its rights/description omit or contradict the independent data license, correct the record metadata before citing it as the canonical version.
 - Public release and a Zenodo DOI are **permanent disclosures** relevant to patentability and institutional/collaborator ownership. Coordinate any confidential invention plans before clicking Publish.
 - There is no need to claim a novel patented algorithm to make software citable. This code is an early computational feasibility study.
 
 ## Official GitHub → Zenodo path
-1. Owner switches the reviewed GitHub repository to **Public** via Settings → General → Danger Zone → Change repository visibility. Check README, data origin and executed notebook in a logged-out browser.
+1. **Already completed:** repository set to **Public**, with original software MIT license and public Demo ODbL notices. Check the latest README in a logged-out browser if desired.
 2. Sign in at https://zenodo.org with the user's **own** account. Under **Linked accounts**, connect GitHub if not connected.
 3. Profile → **GitHub** → **Sync now**; find `Farshidbagheri/GPU-Accelerated-Causal-ML` and enable it. Official: https://help.zenodo.org/docs/github/enable-repository/
-4. Confirm software-publication authority and the *actual* code/data rights; validate `CITATION.cff`. Do **not** set a blanket MIT, ODbL or CC BY license for the mixed archive. A `.zenodo.json` file is currently absent; adding it without reproducing all citation metadata would override `CITATION.cff` in the Zenodo importer. **Do not proceed with a Release if license metadata would be incorrect.**
-5. Create a **GitHub Release** (example tag: `v0.1.0`, description below). Do not merely push a commit. Zenodo's integration archives releases, then issues a DOI for the published record.
+4. **Ready:** `CITATION.cff` declares `version: 0.1.0` and `license: MIT`; the bundled public demo separately declares ODbL in `data/LICENSE.txt`. No `.zenodo.json` is used (adding one would supersede CITATION.cff). Confirm Zenodo has imported MIT as the **software** license without implying a change to the database rights.
+5. Once the Zenodo toggle is ON, use its **Create release** button, which opens GitHub's release editor. Select **Create new tag** `v0.1.0` targeting `main`; enter the title below; select **Publish release** (not draft). **Merely enabling the toggle or pushing a commit does not issue a DOI.** Zenodo archives the published release and issues a DOI.
 6. In Zenodo's GitHub integration page, check the processing status, actual registered DOI, creator fields, source rights, and contents. Do not publish a duplicate manual upload for the same software archive/DOI.
 7. After the DOI **really resolves** at doi.org, add the DOI badge to GitHub's README and optionally add the DOI to the CV or proposal if space/fit warrants. Prefer the version-specific DOI to identify the exact evaluated code; a concept DOI can track all versions.
 
