@@ -1,0 +1,43 @@
+{
+  "project": "GPU-Accelerated-Causal-ML",
+  "dataset": "MIMIC-IV-ED Demo v2.2",
+  "run_url": "https://github.com/Farshidbagheri/GPU-Accelerated-Causal-ML/actions/runs/39519816023",
+  "source_commit": "7f90eeb8c9eeeafc941f0c9197537209e70c8bed",
+  "unit_tests_passed": 5,
+  "unit_tests_total": 5,
+  "unique_stays": 222,
+  "stays_with_vital_sign_rows": 206,
+  "vital_sign_rows": 1038,
+  "records_outside_recorded_ED_window": 69,
+  "hypothetical_cutoffs_minutes_after_arrival": [
+    {
+      "minutes": 30,
+      "before_or_at": 170,
+      "after": 868,
+      "after_pct": 83.6224
+    },
+    {
+      "minutes": 60,
+      "before_or_at": 223,
+      "after": 815,
+      "after_pct": 78.5164
+    },
+    {
+      "minutes": 120,
+      "before_or_at": 345,
+      "after": 693,
+      "after_pct": 66.763
+    }
+  ],
+  "pyxis_deduplicated_rows": 796,
+  "pyxis_stays": 176,
+  "causal_treatment_effect_estimated": false,
+  "GPU_benchmark_completed": false,
+  "limitations": [
+    "Hypothetical time cutoff is not observed treatment time.",
+    "charttime is a documentation time, not a verified availability time.",
+    "69 vital-sign rows are outside stay admission/discharge windows; percentages use all recorded vital-sign rows.",
+    "Pyxis dispensation rows cannot verify first IV antibiotic administration.",
+    "The publicly released 100-person demo is too small and incomplete for credible clinical causal inference."
+  ]
+}

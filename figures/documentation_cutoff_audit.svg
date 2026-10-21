@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 360" role="img" aria-label="Percentage of documented vital-sign events after hypothetical ED arrival cutoffs">
+<rect width="980" height="360" fill="#ffffff"/>
+<text x="42" y="52" font-size="26" font-family="Arial,sans-serif" font-weight="bold" fill="#17263b">Documentation after hypothetical ED decision times</text>
+<text x="42" y="80" font-size="15" font-family="Arial,sans-serif" fill="#546174">MIMIC-IV-ED Demo v2.2 · 1,038 vital-sign events · 222 ED stays</text>
+<text x="42" y="142" font-size="18" font-family="Arial,sans-serif" fill="#17263b">30 minutes</text>
+<rect x="190" y="119" width="590" height="30" rx="6" fill="#e8eef3"/>
+<rect x="190" y="119" width="485" height="30" rx="6" fill="#367aa9"/>
+<text x="805" y="142" font-size="18" font-family="Arial,sans-serif" fill="#17263b" font-weight="bold">83.6%</text><text x="42" y="208" font-size="18" font-family="Arial,sans-serif" fill="#17263b">60 minutes</text>
+<rect x="190" y="185" width="590" height="30" rx="6" fill="#e8eef3"/>
+<rect x="190" y="185" width="455" height="30" rx="6" fill="#367aa9"/>
+<text x="805" y="208" font-size="18" font-family="Arial,sans-serif" fill="#17263b" font-weight="bold">78.5%</text><text x="42" y="274" font-size="18" font-family="Arial,sans-serif" fill="#17263b">120 minutes</text>
+<rect x="190" y="251" width="590" height="30" rx="6" fill="#e8eef3"/>
+<rect x="190" y="251" width="387" height="30" rx="6" fill="#367aa9"/>
+<text x="805" y="274" font-size="18" font-family="Arial,sans-serif" fill="#17263b" font-weight="bold">66.8%</text><text x="42" y="333" font-size="13" font-family="Arial,sans-serif" fill="#69788b">Descriptive charttime audit only — not causal effects, clinical leakage rate, or GPU speedup.</text></svg>
