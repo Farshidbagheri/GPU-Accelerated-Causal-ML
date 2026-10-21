@@ -22,7 +22,7 @@ See the [overview architecture diagram](../figures/research-system-architecture.
 | Time-alignment sensitivity | **Reproduced** a published 2026 synthetic toy; separate clinical policy remains untested | Assess validity for antibiotic estimand and real timestamps |
 | Counterfactual estimator | **Implemented** independent synthetic PyTorch baseline, 3 seeds | External baselines on same synthetic process; uncertainty over more seeds; clinical identification |
 | Reliable reporting | **Partially implemented** through provenance and limited synthetic metrics | Prespecified rule for overlapping scenarios, identification and uncertainty |
-| CUDA acceleration | **Not yet measured**; algorithm supports a requested CUDA execution device | Actual CUDA runner; identical workloads; synchronizing timing; memory/numerical tests |
+| CUDA acceleration | **Scoped measurement completed** in user-executed Tesla T4 Colab: same trained weights, synthetic inference on 160,000 people × 5 options, 11.50× median CUDA/CPU ratio and 1.19×10⁻⁷ max numerical difference. [Provenance](../reports/colab-runs/2026-10-21-t4/README.md) | Full longitudinal causal resampling/cross-fitting pipeline, multi-session confidence intervals, reproducible memory profiling, and clinical inferential fidelity |
 
 ### Engineering metrics
 
@@ -31,4 +31,4 @@ See the [overview architecture diagram](../figures/research-system-architecture.
 - **Compute:** end-to-end wall time, memory, validated scenarios/hour, CPU/CUDA numerical parity.
 - **Reproducibility:** pinned upstream commits and package environments, random seeds, patient-disjoint split, immutable workflow logs.
 
-GPU improvement is a falsifiable hypothesis. Better tensor throughput does not establish better causal identification or a clinical benefit.
+GPU improvement for the **full planned causal pipeline** remains a falsifiable hypothesis. The measured small synthetic inference speedup does not establish better causal identification or a clinical benefit.
